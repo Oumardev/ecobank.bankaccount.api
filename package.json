@@ -1,0 +1,24 @@
+{
+  "name": "apoloan.release.api",
+  "version": "1.0.0",
+  "description": "This package is the new version of apoloan.backend.api",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oumardev/apoloan.release.api.git"
+  },
+  "author": "Oumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oumardev/apoloan.release.api/issues"
+  },
+  "homepage": "https://github.com/Oumardev/apoloan.release.api#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}

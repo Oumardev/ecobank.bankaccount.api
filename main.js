@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/',(req,res)=>{
-    res.send('Welcome to Apoloan release API new version')
+    res.send('Hey welcome new version is deploy')
 })
 
 app.listen(4200,'86.107.197.161',()=>{

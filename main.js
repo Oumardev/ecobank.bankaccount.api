@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/',(req,res)=>{
-    res.send('Hey welcome new version is deploy ok last test')
+    res.send('Test deployement with ssh key')
 })
 
 app.listen(4200,'86.107.197.161',()=>{

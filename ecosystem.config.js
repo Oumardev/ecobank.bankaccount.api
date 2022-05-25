@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   apps : [{
     script: 'main.js',
@@ -9,11 +11,11 @@ module.exports = {
 
   deploy : {
     production : {
-      user : 'root',
-      host : '86.107.197.161',
+      user : process.env.USER_SERVER,
+      host : process.env.SERVER_ADDRESS,
       ref  : 'origin/master',
       repo : 'git@github.com:Oumardev/ecobank.bankaccount.api.git',
-      path : '/home/ecobank.bankaccount.api/',
+      path : process.env.PATH_DEPLOY,
       'post-deploy' : 'npm install'
     }
   }

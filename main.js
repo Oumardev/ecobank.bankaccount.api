@@ -1,15 +1,16 @@
 const express = require('express')
 const { sequelize } = require('./models')
 const app = express()
-
+const { connectAccountToApoloan } = require('./middleware/bankaccount')
 require('dotenv').config();
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 const IP_ADDRESS = process.env.ENVIRONMENT == 'DEVELOPMENT' ? process.env.LOCAL_ADDRESS : process.env.SERVER_ADDRESS
 const PORT = process.env.ENVIRONMENT == 'DEVELOPMENT' ? process.env.LOCAL_PORT : process.env.SERVER_PORT
 
-app.get('/',(req,res)=>{
-    res.send('Bank api')
-})
+app.post('/ecobank/api/connectaccounttoapoloan',connectAccountToApoloan,(req,res)=>{})
 
 app.listen(PORT, IP_ADDRESS, async()=>{
     try {

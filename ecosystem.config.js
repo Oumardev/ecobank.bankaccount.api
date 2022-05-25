@@ -12,8 +12,8 @@ module.exports = {
       user : 'root',
       host : '86.107.197.161',
       ref  : 'origin/master',
-      repo : 'git@github.com:Oumardev/apoloan.release.api.git',
-      path : '/home/ocoder/apoloan.release.api/',
+      repo : 'git@github.com:Oumardev/ecobank.bankaccount.api.git',
+      path : '/home/ecobank.bankaccount.api/',
       'post-deploy' : 'npm install'
     }
   }

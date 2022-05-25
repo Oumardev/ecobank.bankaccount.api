@@ -1,7 +1,7 @@
 {
   "name": "apoloan.release.api",
   "version": "1.0.0",
-  "description": "This package is the new version of apoloan.backend.api",
+  "description": "Since we do not have contact with the bank to check the reloading and the credibility of the bank cards I decided to simulate a bank API mainly that of ecobank I do not know how the verification is done at ecobank but I did according to my knowledge.",
   "main": "main.js",
   "scripts": {
     "test": "test",
@@ -9,15 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Oumardev/apoloan.release.api.git"
+    "url": "git+https://github.com/Oumardev/ecobank.bankaccount.api.git"
   },
   "author": "Oumar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Oumardev/apoloan.release.api/issues"
+    "url": "https://github.com/Oumardev/ecobank.bankaccount.api.git"
   },
-  "homepage": "https://github.com/Oumardev/apoloan.release.api#readme",
+  "homepage": "https://github.com/Oumardev/ecobank.bankaccount.api.git#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "nodemon": "^2.0.16"
   }

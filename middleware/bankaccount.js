@@ -17,14 +17,15 @@ const connectAccountToApoloan = async (req,res,next) =>{
         if(!userAccount) return res.status(401).json({'error': 'Impossible d\'effectuer ce paiement'})
 
         // check user balance
-        const balance = parseFloat(userAccount.MoneyRange)
+        let balance = parseFloat(userAccount.MoneyRange)
+        console.log('balance', balance)
         if(balance < 2000){
             return res.status(401).json({'error': 'Ayez au minimum 2000F sur votre compte: transaction annulé'})
         }else{
-            const restbalance = balance - 2000
+            let restbalance = balance - 2000
             console.log('restbalance: ',restbalance)
 
-            userAccount.MoneyRange = toString(restbalance)
+            userAccount.MoneyRange = restbalance
             await userAccount.save()
 
             // return id to save it in table 'Compte' field 'idbankaccount'

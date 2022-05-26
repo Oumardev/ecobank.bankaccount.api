@@ -17,7 +17,6 @@ app.listen(PORT, IP_ADDRESS, async()=>{
         await sequelize.authenticate()
         console.log(`server is running on http://${IP_ADDRESS}:${PORT}`)
     } catch (error) {
-        console.log(error)
         console.log('error to connected server to database')
     }
 })

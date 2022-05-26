@@ -23,7 +23,6 @@ const connectAccountToApoloan = async (req,res,next) =>{
             return res.status(401).json({'error': 'Ayez au minimum 2000F sur votre compte: transaction annulé'})
         }else{
             let restbalance = balance - 2000
-            console.log('restbalance: ',restbalance)
 
             userAccount.MoneyRange = restbalance
             await userAccount.save()

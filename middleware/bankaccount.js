@@ -37,4 +37,83 @@ const connectAccountToApoloan = async (req,res,next) =>{
     }
 }
 
-module.exports = { connectAccountToApoloan }
+const debitBalance = async (req,res,next) =>{
+
+    const { id, amount } = req.body
+    if( !id || !amount ) return res.status(400).json({'error' : 'Veuillez saisir tout les champs'})
+
+    try {
+        const userAccount = await Account.findOne({
+            where: {
+                id : id
+            }
+        })
+        if(!userAccount) return res.status(400).json({'error': 'Impossible d\'effectuer cette transaction'})
+
+        // check user balance
+        let balance = parseFloat(userAccount.MoneyRange)
+        if(balance < amount){
+            return res.status(400).json({'error': 'Vous ne disposer pas d\'assez de fond pour effectuer ce rechargement'})
+        }else{
+            let restbalance = balance - amount
+            userAccount.MoneyRange = restbalance
+            await userAccount.save()
+
+            // return userAccount
+            return res.status(200).json({'success':'Le rechargement a été effectuer avec succès'})
+        }
+                
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({'error':'Erreur interne'})   
+    }
+}
+
+const creditBalance = async (req,res,next) =>{
+
+    const { id, amount } = req.body
+    if( !id || !amount ) return res.status(400).json({'error' : 'Veuillez saisir tout les champs'})
+
+    try {
+        const userAccount = await Account.findOne({
+            where: {
+                id : id
+            }
+        })
+        if(!userAccount) return res.status(400).json({'error': 'Impossible d\'effectuer cette transaction'})
+        let balance = parseFloat(userAccount.MoneyRange)
+
+        let restbalance = balance + amount
+        userAccount.MoneyRange = restbalance
+        await userAccount.save()
+
+        // return success
+        return res.status(200).json({'success':'Le dépot a été effectuer avec succès'})
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({'error':'Erreur interne'})   
+    }
+}
+
+const getBankAccount = async (req,res,next) =>{
+
+    const { id } = req.body
+    if( !id ) return res.status(400).json({'error' : 'Veuillez saisir tout les champs'})
+
+    try {
+        const userAccount = await Account.findOne({
+            where: {
+                id : id
+            }
+        })
+        if(!userAccount) return res.status(400).json({'error': 'Impossible d\'obtenir les informations sur le compte'})
+
+        // return userAccount
+        return res.status(200).json({'success': userAccount})
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({'error':'Erreur interne'})   
+    }
+}
+
+module.exports = { connectAccountToApoloan, debitBalance, creditBalance, getBankAccount }

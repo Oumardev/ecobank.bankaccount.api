@@ -13,7 +13,7 @@ const PORT = process.env.ENVIRONMENT == 'DEVELOPMENT' ? process.env.LOCAL_PORT :
 app.post('/ecobank/api/connectaccounttoapoloan',connectAccountToApoloan,(req,res)=>{})
 app.post('/ecobank/api/debitbalance',debitBalance,(req,res)=>{})
 app.post('/ecobank/api/creditbalance',creditBalance,(req,res)=>{})
-app.get('/ecobank/api/getbankaccount',getBankAccount,(req,res)=>{})
+app.post('/ecobank/api/getbankaccount',getBankAccount,(req,res)=>{})
 
 app.listen(PORT, IP_ADDRESS, async()=>{
     try {
